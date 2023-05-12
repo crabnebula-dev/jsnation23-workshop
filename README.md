@@ -7,13 +7,21 @@ This is the code accompanying the JSNation 2023 workshop.
 1. Setup Tauri prerequisites for your OS (especially on Linux): 
    https://tauri.app/v1/guides/getting-started/prerequisites/
 
-2. Clone this repo
+2. Install NodeJS and enable corepack
+
+    Install [NodeJS](https://nodejs.org/en) then run the following command to enable corepack (this will make all popular package managers available)
+
+    ```
+    corepack enable
+    ```
+
+3. Clone this repo
 
     ```
     git clone https://github.com/crabnebula-dev/jsnation23-workshop
     ```
 
-3. Install dependencies
+4. Install dependencies
 
     ```
     npm i
