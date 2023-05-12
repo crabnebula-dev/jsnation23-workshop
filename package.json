@@ -1,0 +1,11 @@
+{
+    "name": "jsnation-demo",
+    "private": true,
+    "workspaces": [
+      "checkpoints/1",
+      "checkpoints/2",
+      "checkpoints/3",
+      "checkpoints/4",
+      "checkpoints/5"
+    ]
+  }
