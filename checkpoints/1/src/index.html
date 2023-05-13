@@ -1,16 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/src/styles.css" />
-    <script type="module" src="/src/main.ts" defer></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
 
-  <body>
-    <div class="container">
-      <h1>Hello JSNation!</h1>
-    </div>
-  </body>
+      color: #0f0f0f;
+      background-color: #f6f6f6;
+
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .container {
+      margin: 0;
+      padding-top: 10vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color: #f6f6f6;
+        background-color: #2f2f2f;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Hello JSNation!</h1>
+  </div>
+</body>
+
 </html>
