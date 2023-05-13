@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json">
   <style>
     :root {
       font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
@@ -104,6 +105,10 @@
     </div>
 
     <ol id="calc-output"></ol>
+
+    <div class="row">
+      <button id="new-window-button" type="button">New Window</button>
+    </div>
   </div>
 
   <script>
@@ -139,7 +144,31 @@
       InputEl = document.querySelector("#calc-input");
       OutputEl = document.querySelector("#calc-output");
       document.getElementById('calc-button')?.addEventListener("click", () => calculate())
+
+      document.getElementById('new-window-button')?.addEventListener('click', () => {
+        window.open("/", "new-window", "width=600,height=600");
+      })
     });
+  </script>
+
+  <script>
+    window.addEventListener('load', () => {
+      registerSW();
+    });
+
+    // Register the Service Worker
+    async function registerSW() {
+      if ('serviceWorker' in navigator) {
+        try {
+          await navigator
+            .serviceWorker
+            .register('sw.js');
+        }
+        catch (e) {
+          console.log('SW registration failed');
+        }
+      }
+    }
   </script>
 </body>
 
