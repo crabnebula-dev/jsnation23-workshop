@@ -1,21 +1,18 @@
 {
   "build": {
-    "beforeDevCommand": "pnpm dev",
-    "beforeBuildCommand": "pnpm build",
-    "devPath": "http://localhost:1420",
-    "distDir": "../dist",
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devPath": "../src",
+    "distDir": "../src",
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "JSNation Demo",
+    "productName": "tauri-app",
     "version": "0.0.0"
   },
   "tauri": {
     "allowlist": {
       "all": false,
-      "window": {
-        "create": true
-      },
       "shell": {
         "all": false,
         "open": true
@@ -43,7 +40,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "jsnation",
+        "title": "tauri-app",
         "width": 800,
         "height": 600
       }
