@@ -2,11 +2,11 @@
   "name": "checkpoint-2",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "main": "main.js",
   "scripts": {
-    "tauri": "tauri"
+    "start": "electron ."
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.3.0"
+    "electron": "^24.3.0"
   }
 }

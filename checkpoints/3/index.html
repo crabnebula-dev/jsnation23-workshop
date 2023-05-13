@@ -111,8 +111,6 @@
   </div>
 
   <script>
-    const { WebviewWindow } = window.__TAURI__.window
-
     let InputEl
     let OutputEl
 
@@ -147,18 +145,7 @@
       document.getElementById('calc-button')?.addEventListener("click", () => calculate())
 
       document.getElementById('new-window-button')?.addEventListener('click', () => {
-        const webview = new WebviewWindow((Math.random() * 100000).toPrecision(5), {
-          url: '/'
-        });
-        webview.once('tauri://created', function () {
-          // webview window successfully created
-          console.log('window successfully created');
-
-        });
-        webview.once('tauri://error', function (e) {
-          // an error happened creating the webview window
-          console.log('failed to create window', e);
-        });
+        window.electronAPI.newWindow()
       })
     });
   </script>
