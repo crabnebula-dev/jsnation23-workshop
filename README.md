@@ -39,29 +39,15 @@ This repo contains a handful or numbered snapshots (1 through 4) in the `./check
 You can run the checkpoint apps by running one of the following commands:
 
 ```
-npm run tauri dev --workspace=checkpoint-<checkpoint number>
+npm run start --workspace=checkpoint-<checkpoint number>
 
 # OR
 
-pnpm run --filter checkpoint-<checkpoint number> tauri dev
+pnpm run --filter checkpoint-<checkpoint number> start
 
 # OR
 
-yarn workspace checkpoint-<checkpoint number> tauri dev
-```
-
-To build production-ready bundles run
-
-```
-npm run tauri build --workspace=checkpoint-<checkpoint number>
-
-# OR
-
-pnpm run --filter checkpoint-<checkpoint number> tauri build
-
-# OR
-
-yarn workspace checkpoint-<checkpoint number> tauri build
+yarn workspace checkpoint-<checkpoint number> start
 ```
 
 ## License
