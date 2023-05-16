@@ -12,7 +12,8 @@ const createWindow = () => {
     }
   })
 
-  mainWindow.loadFile('index.html')
+  let indexPath = path.join(__dirname, 'index.html')
+  mainWindow.loadURL(`app://${indexPath}`)
 }
 
 protocol.registerSchemesAsPrivileged([
@@ -25,7 +26,7 @@ app.whenReady().then(() => {
   })
 
   protocol.registerFileProtocol('app', (request, callback) => {
-    const filePath = url.fileURLToPath('file://' + request.url.slice('app://'.length))
+    const filePath = url.fileURLToPath('file:///' + request.url.slice('app://'.length))
     callback(filePath)
   })
 
