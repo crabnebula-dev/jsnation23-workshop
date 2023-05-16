@@ -1,0 +1,12 @@
+{
+  "name": "checkpoint-5",
+  "private": true,
+  "version": "0.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^24.3.0"
+  }
+}
