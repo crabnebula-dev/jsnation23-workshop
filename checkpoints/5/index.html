@@ -110,11 +110,14 @@
     </div>
   </div>
 
-  <script>
+  <script type="module">
+    import * as Comlink from "https://unpkg.com/comlink/dist/esm/comlink.mjs";
+
     let InputEl
     let OutputEl
 
-    const myWorker = new SharedWorker("worker.js", { type: "module" });
+    const worker = new SharedWorker("worker.js");
+    const obj = Comlink.wrap(worker.port);
 
     function render(values) {
       const children = values.map(v => {
@@ -126,30 +129,17 @@
       OutputEl.replaceChildren(...children)
     }
 
-    function calculate() {
+    async function calculate() {
       if (OutputEl && InputEl) {
         const limit = parseInt(InputEl.value);
 
-        console.log(limit);
-
-        myWorker.port.postMessage(["set", limit]);
-        console.log("Message posted to worker");
+        await obj.update(limit)
+        render(await obj.values)
       }
     }
 
     window.addEventListener("DOMContentLoaded", () => {
-      console.log(myWorker);
-
-      myWorker.onerror = console.error
-      // myWorker.port.start();
-      myWorker.port.onmessage = (e) => {
-        console.log(e);
-        if (typeof e.data !== "string") {
-          render(e.data)
-        }
-      };
-
-      myWorker.port.postMessage(["get"]);
+      obj.values.then(render)
 
       InputEl = document.querySelector("#calc-input");
       OutputEl = document.querySelector("#calc-output");

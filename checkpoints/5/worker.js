@@ -1,4 +1,4 @@
-let values = []
+importScripts("https://unpkg.com/comlink/dist/umd/comlink.js");
 
 function fib(x) {
     if (x <= 1n) {
@@ -8,30 +8,14 @@ function fib(x) {
     }
 }
 
-onconnect = (e) => {
-    const port = e.ports[0];
-
-    port.addEventListener("message", (e) => {
-        const [cmd, ...args] = e.data
-
-        switch (cmd) {
-            case "get":
-                port.postMessage(values)
-                break;
-            case "set":
-                values = []
-                port.postMessage(`args ${JSON.stringify(args)}`)
-                for (let i = 0; i < args[0]; i++) {
-                    const v = fib(BigInt(i))
-                    port.postMessage(`calc fib(${i}) => ${v}`)
-                    values.push(v)
-                }
-                port.postMessage(values)
-                break
-            default:
-                break;
+const obj = {
+    values: [],
+    update(limit) {
+        this.values = []
+        for (let i = 0; i < limit; i++) {
+            this.values.push(fib(BigInt(i)))
         }
-    });
+    },
+  };
 
-    port.start(); // Required when using addEventListener. Otherwise called implicitly by onmessage setter.
-};
+onconnect = (e) => Comlink.expose(obj, e.ports[0]);
