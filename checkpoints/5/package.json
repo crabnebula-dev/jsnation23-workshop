@@ -1,0 +1,12 @@
+{
+  "name": "checkpoint-5",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "http-server ."
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
